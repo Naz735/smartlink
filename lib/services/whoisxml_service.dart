@@ -23,7 +23,7 @@ class WhoisXmlInfo {
 
 class WhoisXmlService {
   // Your WhoisXML API key
-  static const String apiKey = "at_HgGv6H4Bu5w9FoQlNtWPRt5B2Dhd6";
+  static const String apiKey = "at_Ue6Khj6zOdkpQhJyHwsSfux5986IW";
 
   Future<WhoisXmlInfo> lookup(String url) async {
     try {
