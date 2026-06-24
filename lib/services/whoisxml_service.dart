@@ -23,7 +23,7 @@ class WhoisXmlInfo {
 
 class WhoisXmlService {
   // Your WhoisXML API key
-  static const String apiKey = "at_VFuvieutqtOI3B6UBPPwibwmlHTNt";
+  static const String apiKey = "at_HgGv6H4Bu5w9FoQlNtWPRt5B2Dhd6";
 
   Future<WhoisXmlInfo> lookup(String url) async {
     try {
@@ -42,7 +42,8 @@ class WhoisXmlService {
             }),
           )
           .timeout(const Duration(seconds: 15));
-
+print("WHOIS Response:");
+print(response.body);
       if (response.statusCode != 200) {
         return _failed(domain, "HTTP Error: ${response.statusCode}");
       }

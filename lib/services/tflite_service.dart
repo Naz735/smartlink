@@ -33,12 +33,12 @@ class TFLiteService {
       throw Exception("Model not loaded");
     }
 
-    if (input.length != 8) {
-      throw Exception("Expected 8 features, got ${input.length}");
+    if (input.length != 30) {
+      throw Exception("Expected 30 features, got ${input.length}");
     }
 
     try {
-      // ✅ IMPORTANT: 2D input [1,8]
+      // ✅ IMPORTANT: 2D input [1,30]
       final inputTensor = [input];
 
       // ✅ IMPORTANT: 2D output [1,1]
@@ -48,7 +48,6 @@ class TFLiteService {
 
       print("Input tensor: $inputTensor");
 
-      // 🚀 RUN MODEL
       _interpreter.run(inputTensor, outputTensor);
 
       print("Raw output: $outputTensor");
@@ -59,6 +58,17 @@ class TFLiteService {
       return [result];
     } catch (e) {
       throw Exception("Prediction error: $e");
+    }
+  }
+
+  // =========================
+  // ✅ CLOSE MODEL
+  // =========================
+  void close() {
+    if (_modelLoaded) {
+      _interpreter.close();
+      _modelLoaded = false;
+      print("Model closed");
     }
   }
 }
